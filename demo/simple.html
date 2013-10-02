@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" type="text/css" rel="stylesheet">        
+        
+        <script src="http://code.jquery.com/jquery-1.10.1.js"></script>        
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>        
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+        
+        <script src="../src/backbone.popover.js"></script>
+        <script>
+/*        
+            var Popover = Backbone.Modal.extend({
+                template    : '<div><h1>MODAL!!</h1></div>',
+                render      : function() {
+                    this.$el.html( _.template(this.template)() );
+                }
+            });
+*/
+            $(document).ready(onReady);
+            function onReady() {
+                var model = new Backbone.Model();
+                model.on('change', function(e){
+                    console.log(e);
+                }, this);
+
+                var popover = new Backbone.Editable({
+                    target      : $('.name'),
+                    title       : 'Name',
+                    type        : 'string',
+                    model       : model,
+                    fieldname   : 'name'
+                });
+            }
+        </script>
+        <style>
+            .editable {
+                color: blue;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sample page for the editor</h1>
+        <table class="table">
+            <tr>
+                <td>Type</td>
+                <td>Sample</td>
+            </tr>
+            <tr>
+                <td>
+                    String
+                </td>
+                <td>
+                    <span class="name editable">Alex</span>
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>
